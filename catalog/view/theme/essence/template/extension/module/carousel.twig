@@ -1,0 +1,87 @@
+<div class="carusel-mask">
+<span> </span>
+<div class="carusel-main carusel{{ module }}">
+{% for banner in banners %}
+<div class="carusel-main-item" style="background-image:url({{ banner.image }})"></div>
+{% endfor %}
+</div>
+</div>
+<script type="text/javascript">
+<!--
+   $('.carusel{{ module }}').slick({
+     dots: false,
+	 arrows: false,
+     infinite: true,
+	 slidesToShow: 6,
+	      slidesToScroll: 1,
+     autoplay: true,
+     autoplaySpeed: 5000,
+    responsive: [
+	{
+      breakpoint: 991,
+      settings: {
+        slidesToShow: 5
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 4
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3
+      }
+    }
+
+  ]
+
+   });
+   -->
+</script>
+<style>
+.carusel-mask {
+position: relative;
+height: 100px;
+overflow: hidden;
+width: calc(100% + 30px);
+margin: 0 -15px;
+}
+.carusel-mask span {
+position: absolute;
+height: 100%;
+width: calc(100% - 30px);
+top: 0;
+left: 15px;
+z-index: 8;
+background-color: rgba(15, 62, 91, 0.3);
+}
+.carusel-main {
+width: calc(100% - 30px);
+padding: 0;
+margin: 0 15px 50px 15px;
+}
+.slide {
+width: 100%;
+margin: auto;
+}
+.carusel-main-item {
+min-height: 100px;
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+padding: 0;
+margin: 0;
+}
+
+@media (max-width: 768px) {
+.carusel-mask {
+height: 80px;
+}
+.carusel-main-item {
+min-height: 80px;
+}
+}
+</style>

@@ -1,0 +1,36 @@
+2022-09-19 19:05:45 - PHP Notice:  Undefined index: customer_id in D:\OpenServer\domains\test3.com.ia\catalog\model\account\news.php on line 8
+2022-09-19 19:17:57 - PHP Notice:  Undefined index: model in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 77
+2022-09-19 19:17:59 - PHP Notice:  Undefined index: model in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 77
+2022-09-19 19:18:07 - PHP Notice:  Undefined index: model in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 77
+2022-09-19 19:19:24 - PHP Notice:  Undefined index: model in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 77
+2022-09-19 19:20:04 - PHP Notice:  Undefined index: model in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 77
+2022-09-19 19:20:14 - PHP Notice:  Undefined index: model in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 77
+2022-09-20 9:03:58 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 10
+2022-09-20 9:04:15 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 10
+2022-09-20 9:04:49 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 10
+2022-09-20 9:06:23 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 10
+2022-09-20 9:06:34 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 10
+2022-09-20 9:06:57 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 10
+2022-09-20 9:27:24 - PHP Notice:  Undefined index: lastname in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 273
+2022-09-20 9:27:24 - PHP Notice:  Indirect modification of overloaded property ControllerAccountNews::$error has no effect in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 274
+2022-09-20 9:27:24 - PHP Notice:  Undefined index: address_1 in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 277
+2022-09-20 9:27:24 - PHP Notice:  Indirect modification of overloaded property ControllerAccountNews::$error has no effect in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 278
+2022-09-20 9:27:24 - PHP Notice:  Undefined index: city in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 281
+2022-09-20 9:27:24 - PHP Notice:  Indirect modification of overloaded property ControllerAccountNews::$error has no effect in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 282
+2022-09-20 9:27:24 - PHP Notice:  Undefined index: country_id in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 287
+2022-09-20 9:27:24 - PHP Notice:  Undefined index: country_id in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 293
+2022-09-20 9:27:24 - PHP Notice:  Indirect modification of overloaded property ControllerAccountNews::$error has no effect in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 294
+2022-09-20 9:27:24 - PHP Notice:  Indirect modification of overloaded property ControllerAccountNews::$error has no effect in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 298
+2022-09-20 9:34:12 - PHP Notice:  Undefined index: short_name in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 257
+2022-09-20 9:34:44 - PHP Notice:  Undefined index: short_name in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 257
+2022-09-20 9:35:14 - PHP Notice:  Undefined index: short_name in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 257
+2022-09-20 9:35:14 - PHP Notice:  Undefined variable: info in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 194
+2022-09-20 9:35:37 - PHP Notice:  Undefined index: short_name in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 250
+2022-09-20 9:35:37 - PHP Notice:  Undefined variable: info in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 194
+2022-09-20 10:07:05 - PHP Notice:  Undefined index: id in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 144
+2022-09-20 10:21:15 - PHP Notice:  Undefined index: id in D:\OpenServer\domains\test3.com.ia\catalog\controller\account\news.php on line 193
+2022-09-20 11:24:30 - PHP Notice:  Undefined index: path in D:\OpenServer\domains\test3.com.ia\catalog\controller\product\news.php on line 65
+2022-09-20 11:24:30 - PHP Notice:  Undefined index: product_id in D:\OpenServer\domains\test3.com.ia\catalog\controller\product\news.php on line 65
+2022-09-20 11:24:33 - PHP Notice:  Undefined index: path in D:\OpenServer\domains\test3.com.ia\catalog\controller\product\news.php on line 65
+2022-09-20 11:24:33 - PHP Notice:  Undefined index: product_id in D:\OpenServer\domains\test3.com.ia\catalog\controller\product\news.php on line 65
+2022-09-20 12:45:29 - PHP Notice:  Use of undefined constant HTTPS_CATALOG - assumed 'HTTPS_CATALOG' in D:\OpenServer\domains\test3.com.ia\catalog\controller\common\filemanager.php on line 8

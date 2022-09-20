@@ -1,0 +1,86 @@
+{{ header }}
+<div id="product-category" class="container-fluid">
+    <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %} {% if loop.last %}
+            <li class="breadcrumb-item" aria-current="page"><span class="link active">{{ breadcrumb.text }}</span></li>
+        {% elseif loop.revindex0 == 1 %}
+            <li class="breadcrumb-item" data-prev>
+                <a href="{{ breadcrumb.href }}" class="link"><span>{{ breadcrumb.text }}</span></a>
+            </li>
+        {% else %}
+            <li class="breadcrumb-item">
+                <a href="{{ breadcrumb.href }}" class="link"><span>{{ breadcrumb.text }}</span></a>
+            </li>
+        {% endif %} {% endfor %}
+    </ul>
+    <div class="row">
+        {{ column_left }} {% if column_left and column_right %} {% set class = 'col-sm-6' %} {% elseif column_left or column_right %} {% set class = 'col-sm-9' %} {% else %} {% set class = 'col-sm-12' %} {% endif %}
+        <div id="content" class="{{ class }}">
+            {{ content_top }}
+            <h2 class="title">{{ heading_title }}</h2>
+            {% if news %}
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-sm pull-right">
+                        <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip"
+                                title="{{ button_list }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </button>
+                        <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip"
+                                title="{{ button_grid }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for new in news %}
+                        <div class="product-layout product-list col-xs-12">
+                            <div class="product-thumb transition">
+                                <div class="image">
+                                    <a href="#"><img src="{{ new.thumb }}" alt="{{ new.name }}"
+                                                     title="{{ new.name }}"
+                                                     class="img-responsive"/></a>
+                                </div>
+                                <div class="caption">
+                                    <h4><a href="#">{{ new.name }}</a></h4>
+                                    <p>{{ new.short_name }}</p>
+                                    <p>{{ new.description }}</p>
+                                    <p>{{ new.date_added }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row hidden">
+                    <div class="col-sm-6 text-left">{{ pagination }}</div>
+                    <div class="col-sm-6 text-right">{{ results }}</div>
+                </div>
+            {% endif %}
+            {% if not news %}
+                <p>Not news</p>
+                <div class="buttons">
+                    <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a>
+                    </div>
+                </div>
+            {% endif %}
+            {{ content_bottom }}
+        </div>
+        {{ column_right }}
+    </div>
+</div>
+{{ footer }}

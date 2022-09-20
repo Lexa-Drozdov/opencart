@@ -1,0 +1,82 @@
+{{ header }}
+<div id="account-wishlist" class="container-fluid">
+  <ul class="breadcrumb">
+     {% for breadcrumb in breadcrumbs %}
+          {% if loop.last %}
+            <li class="breadcrumb-item" aria-current="page"><span class="link active" >{{ breadcrumb.text }}</span></li>
+          {% elseif loop.revindex0 == 1 %}
+            <li class="breadcrumb-item" data-prev><a href="{{ breadcrumb.href }}" class="link"><span>{{ breadcrumb.text }}</span></a></li>
+          {% else %}
+            <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}" class="link"><span>{{ breadcrumb.text }}</span></a></li>
+          {% endif %}
+        {% endfor %}
+  </ul>
+  {% if success %}
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endif %}
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h2>{{ heading_title }}</h2>
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <a href="{{ continue }}" class="btn btn-primary">Add News</a>
+        </div>
+      </div>
+      {% if news %}
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td class="text-center">{{ column_image }}</td>
+              <td class="text-left">{{ column_name }}</td>
+              <td class="text-left">{{ column_short }}</td>
+              <td class="text-left">{{ column_desc }}</td>
+              <td class="text-left">{{ column_date }}</td>
+              <td class="text-right">{{ column_action }}</td>
+            </tr>
+          </thead>
+          <tbody>
+          
+          {% for new in news %}
+          <tr>
+            <td class="text-center">
+              {% if new.thumb %}
+              <a>
+                <img src="{{ new.thumb }}" alt="{{ new.name }}" title="{{ new.name }}" />
+                </a>
+              {% endif %}
+            </td>
+            <td class="text-left">{{ new.name }}</td>
+            <td class="text-left">{{ new.short_name }}</td>
+            <td class="text-left">{{ new.description }}</td>
+            <td class="text-left">{{ new.date_added }}</td>
+            <td class="text-right">
+              <a href="{{ new.edit }}" data-toggle="tooltip" title="Edit" class="btn btn-info">Edit</a>
+              <a href="{{ new.delete }}" data-toggle="tooltip" title="Delete" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+            </tbody>
+          
+        </table>
+      </div>
+        <div class="row">
+          <div class="col-sm-6 text-left">{{ pagination }}</div>
+          <div class="col-sm-6 text-right">{{ results }}</div>
+        </div>
+      {% else %}
+      <p>{{ text_empty }}</p>
+      {% endif %}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

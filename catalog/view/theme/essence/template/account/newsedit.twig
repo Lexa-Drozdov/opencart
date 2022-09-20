@@ -1,0 +1,249 @@
+{{ header }}
+<div id="account-edit" class="container-fluid">
+  <ul class="breadcrumb">
+     {% for breadcrumb in breadcrumbs %}
+          {% if loop.last %}
+            <li class="breadcrumb-item" aria-current="page"><span class="link active" >{{ breadcrumb.text }}</span></li>
+          {% elseif loop.revindex0 == 1 %}
+            <li class="breadcrumb-item" data-prev><a href="{{ breadcrumb.href }}" class="link"><span>{{ breadcrumb.text }}</span></a></li>
+          {% else %}
+            <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}" class="link"><span>{{ breadcrumb.text }}</span></a></li>
+          {% endif %}
+        {% endfor %}
+  </ul>
+  {% if error_warning %}
+  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+  {% endif %}
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h1>Edit News</h1>
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+          <input type="hidden" name="id" value="{{ id }}">
+        <fieldset>
+          <legend>{{ text_your_details }}</legend>
+
+            <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-name">Name</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" value="{{ name }}" placeholder="Name" id="input-name" class="form-control" />
+              {% if error_name %}
+              <div class="text-danger">{{ error_name }}</div>
+              {% endif %}
+            </div>
+          </div>
+
+            <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-short_name">Short Name </label>
+            <div class="col-sm-10">
+              <input type="text" name="short_name" value="{{ short_name }}" placeholder="Short Name" id="input-short_name" class="form-control" />
+              {% if error_short_name %}
+              <div class="text-danger">{{ error_short_name }}</div>
+              {% endif %}
+            </div>
+          </div>
+
+            <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-description">Description</label>
+            <div class="col-sm-10">
+             <textarea name="description" rows="10" id="input-description" class="form-control">{{ description }}</textarea>
+                {% if error_description %}
+                    <div class="text-danger">{{ error_description }}</div>
+                {% endif %}
+            </div>
+          </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Image</label>
+                <div class="col-sm-10">
+                <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail">
+                    <img src="{{ thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" />
+                </a>
+            <input type="hidden" name="image" value="{{ image }}" id="input-image" />
+            </div>
+           </div>
+
+            <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-filename">File</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <input type="text" name="filename" value="{{ filename }}" placeholder="{{ entry_filename }}" id="input-filename" class="form-control" />
+                        <span class="input-group-btn">
+                <button type="button" id="button-upload" data-loading-text="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-upload"></i> {{ button_upload }}</button>
+                </span> </div>
+                    {% if error_filename %}
+                        <div class="text-danger">{{ error_filename }}</div>
+                    {% endif %}
+                    {% if error_mask %}
+                        <div class="text-danger">{{ error_mask }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div style="display: none" class="form-group required">
+                <label class="col-sm-2 control-label" for="input-mask"><span data-toggle="tooltip" title="{{ help_mask }}">{{ entry_mask }}</span></label>
+                <div class="col-sm-10">
+                    <input type="text" name="mask" value="{{ mask }}" placeholder="{{ entry_mask }}" id="input-mask" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-10">
+                    {% if status %}
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="1" checked="checked" />
+                            {{ text_yes }}</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="0" />
+                            {{ text_no }}</label>
+                    {% else %}
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="1" />
+                            {{ text_yes }}</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="0" checked="checked" />
+                            {{ text_no }}</label>
+                    {% endif %}
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="buttons clearfix">
+          <div class="pull-left"><a href="{{ back }}" class="btn btn-default">{{ button_back }}</a></div>
+          <div class="pull-right">
+            <input type="submit" value="Save" class="btn btn-primary" />
+          </div>
+        </div>
+
+      </form>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+<script type="text/javascript">
+
+    // Image Manager
+    $(document).on('click', 'a[data-toggle=\'image\']', function(e) {
+        var $element = $(this);
+        var $popover = $element.data('bs.popover'); // element has bs popover?
+
+        e.preventDefault();
+
+        // destroy all image popovers
+        $('a[data-toggle="image"]').popover('destroy');
+
+        // remove flickering (do not re-add popover when clicking for removal)
+        if ($popover) {
+            return;
+        }
+
+        $element.popover({
+            html: true,
+            placement: 'right',
+            trigger: 'manual',
+            content: function() {
+                return '<button type="button" id="button-image" class="btn btn-primary"><i class="fa fa-pencil"></i></button> <button type="button" id="button-clear" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>';
+            }
+        });
+
+        $element.popover('show');
+
+        $('#button-image').on('click', function() {
+            var $button = $(this);
+            var $icon   = $button.find('> i');
+
+            $('#modal-image').remove();
+
+            $.ajax({
+                url: 'index.php?route=common/filemanager&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id'),
+                dataType: 'html',
+                beforeSend: function() {
+                    $button.prop('disabled', true);
+                    if ($icon.length) {
+                        $icon.attr('class', 'fa fa-circle-o-notch fa-spin');
+                    }
+                },
+                complete: function() {
+                    $button.prop('disabled', false);
+
+                    if ($icon.length) {
+                        $icon.attr('class', 'fa fa-pencil');
+                    }
+                },
+                success: function(html) {
+                    $('body').append('<div id="modal-image" class="modal">' + html + '</div>');
+
+                    $('#modal-image').modal('show');
+                }
+            });
+
+            $element.popover('destroy');
+        });
+
+        $('#button-clear').on('click', function() {
+            $element.find('img').attr('src', $element.find('img').attr('data-placeholder'));
+
+            $element.parent().find('input').val('');
+
+            $element.popover('destroy');
+        });
+    });
+
+    $('#button-upload').on('click', function() {
+        $('#form-upload').remove();
+
+        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+        $('#form-upload input[name=\'file\']').trigger('click');
+
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function() {
+            if ($('#form-upload input[name=\'file\']').val() != '') {
+                clearInterval(timer);
+
+                $.ajax({
+                    url: 'index.php?route=account/news/upload&user_token={{ user_token }}',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#button-upload').button('loading');
+                    },
+                    complete: function() {
+                        $('#button-upload').button('reset');
+                    },
+                    success: function(json) {
+                        if (json['error']) {
+                            alert(json['error']);
+                        }
+
+                        if (json['success']) {
+                            alert(json['success']);
+
+                            $('input[name=\'filename\']').val(json['filename']);
+                            $('input[name=\'mask\']').val(json['mask']);
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+
+
+
+//--></script>
+{{ footer }}
